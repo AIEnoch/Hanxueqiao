@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汉学家评注管理 · 汉学桥</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body.page-admin { padding-top: 72px; background: var(--light-bg, #f1f5f9); }
+        .sn-wrap { max-width: 920px; margin: 0 auto; padding: 24px 16px 56px; }
+        .sn-card {
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid var(--border-color, #e2e8f0);
+            padding: 22px;
+            margin-bottom: 18px;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+        }
+        .sn-card h2 { font-size: 1.05rem; color: var(--primary-color, #0f766e); margin-bottom: 12px; }
+        .sn-steps { color: var(--text-muted); font-size: 13px; line-height: 1.65; margin-bottom: 12px; }
+        .sn-req {
+            display: inline-block; margin-left: 6px; padding: 1px 6px; border-radius: 4px;
+            font-size: 11px; font-weight: 600; background: #fef3c7; color: #92400e;
+        }
+        .sn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+        @media (max-width: 720px) { .sn-grid { grid-template-columns: 1fr; } }
+        .sn-field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 4px; color: var(--text-color); }
+        .sn-field input[type="text"], .sn-field textarea, .sn-field select {
+            width: 100%; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border-color);
+            font-size: 14px; font-family: inherit;
+        }
+        .sn-field textarea { min-height: 140px; resize: vertical; }
+        .sn-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+        .sn-actions button {
+            padding: 10px 16px; border-radius: 8px; border: none; cursor: pointer;
+            font-size: 14px; font-family: inherit; font-weight: 600;
+        }
+        .btn-pri { background: var(--primary-color, #0f766e); color: #fff; }
+        .btn-sec { background: #e2e8f0; color: var(--text-color); }
+        .btn-dan { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+        .sn-note-item {
+            border: 1px solid var(--border-color); border-radius: 10px; padding: 14px 16px;
+            margin-bottom: 12px; background: #fafafa;
+        }
+        .sn-note-head { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; margin-bottom: 8px; }
+        .sn-note-head strong { font-family: 'Noto Serif SC', serif; }
+        .sn-lang {
+            font-size: 12px; padding: 2px 10px; border-radius: 999px;
+            background: #ecfeff; color: #0e7490; font-weight: 600;
+        }
+        .sn-pin { font-size: 11px; padding: 2px 8px; border-radius: 6px; background: #fef3c7; color: #92400e; font-weight: 700; }
+        .sn-note-body {
+            font-size: 14px; color: var(--text-color); line-height: 1.6;
+            max-height: 100px; overflow: auto; white-space: pre-wrap;
+        }
+        .sn-row-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+        .sn-row-actions button { padding: 6px 12px; font-size: 13px; border-radius: 8px; border: 1px solid var(--border-color); background: #fff; cursor: pointer; }
+        #snStatus { margin-top: 12px; font-size: 13px; color: var(--text-muted); white-space: pre-wrap; }
+        .sn-lang-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        @media (max-width: 560px) { .sn-lang-grid { grid-template-columns: 1fr; } }
+        .sn-lang-opt {
+            border: 2px solid var(--border-color); border-radius: 10px; padding: 12px 14px; cursor: pointer;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .sn-lang-opt input { margin: 0; flex-shrink: 0; }
+        .sn-login-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end; }
+        .sn-login-row .sn-field { flex: 1; min-width: 220px; margin-bottom: 0; }
+    </style>
+</head>
+<body class="page-admin">
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html" class="logo-link"><h1>汉学家评注 · 管理后台</h1></a>
+                <p class="subtitle">仅管理员可录入；访客前台只读 · 与读者评论完全分开</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="sn-wrap">
+        <p><a href="../index.html">← 返回首页</a> · <a href="literature-admin.html">文献录入后台</a></p>
+
+        <div class="sn-card">
+            <h2>① 连接服务器</h2>
+            <p class="sn-steps">请用 <code>http://localhost:8787/admin/scholar-notes-admin.html</code> 打开本页（不要用 file://）。密钥与 <code>server/.env</code> 里的 ADMIN_SECRET 相同。</p>
+            <div class="sn-login-row">
+                <div class="sn-field">
+                    <label for="snSecret">管理员密钥<span class="sn-req">必填</span></label>
+                    <input id="snSecret" type="password" autocomplete="off">
+                </div>
+                <button type="button" class="btn-sec" id="snSaveSecret">保存密钥</button>
+                <button type="button" class="btn-pri" id="snLoadLit">载入书目与章节列表</button>
+            </div>
+            <p id="snConn"></p>
+        </div>
+
+        <div class="sn-card" id="snMain" hidden>
+            <h2>② 选择本章</h2>
+            <div class="sn-grid">
+                <div class="sn-field">
+                    <label for="snWork">文献（网站文件夹）<span class="sn-req">必填</span></label>
+                    <select id="snWork"></select>
+                </div>
+                <div class="sn-field">
+                    <label for="snChapter">章节文件夹<span class="sn-req">必填</span></label>
+                    <select id="snChapter"></select>
+                </div>
+            </div>
+            <div class="sn-actions">
+                <button type="button" class="btn-pri" id="snRefreshList">刷新本章评注列表</button>
+            </div>
+        </div>
+
+        <div class="sn-card" id="snListCard" hidden>
+            <h2>本章已有评注（自上而下为前台顺序；置顶优先显示）</h2>
+            <div id="snList"></div>
+        </div>
+
+        <div class="sn-card" id="snFormCard" hidden>
+            <h2 id="snFormTitle">③ 新增一条评注</h2>
+            <p class="sn-steps">请您<strong>先选定本条评注原文是哪一种语言</strong>（四选一，必选），再在正文框里<strong>只写该语言原文</strong>——本站不会自动生成其它语种版本。</p>
+
+            <div class="sn-field" style="margin-bottom:14px;">
+                <label>汉学家姓名<span class="sn-req">必填</span></label>
+                <input type="text" id="snScholar" maxlength="160" placeholder="例如：张某某 教授">
+            </div>
+
+            <div class="sn-field" style="margin-bottom:14px;">
+                <label>本条评注的原始语种<span class="sn-req">必选其一</span></label>
+                <div class="sn-lang-grid">
+                    <label class="sn-lang-opt"><input type="radio" name="snLang" value="zh"> <span>中文原文</span></label>
+                    <label class="sn-lang-opt"><input type="radio" name="snLang" value="es"> <span>Español 原文</span></label>
+                    <label class="sn-lang-opt"><input type="radio" name="snLang" value="pt"> <span>Português 原文</span></label>
+                    <label class="sn-lang-opt"><input type="radio" name="snLang" value="it"> <span>Italiano 原文</span></label>
+                </div>
+            </div>
+
+            <div class="sn-field" style="margin-bottom:14px;">
+                <label for="snBody">评注正文（仅填写上面所选语种）<span class="sn-req">必填</span></label>
+                <textarea id="snBody" rows="10" placeholder="请在此完整写入该语种的评注正文，保留您需要的分段与标点。"></textarea>
+            </div>
+
+            <div class="sn-field" style="margin-bottom:14px;">
+                <label><input type="checkbox" id="snPin"> 在本章内置顶展示（仍会排在其它置顶项之后，按排序按钮调整）</label>
+            </div>
+
+            <div class="sn-actions">
+                <button type="button" class="btn-pri" id="snSubmit">保存本条</button>
+                <button type="button" class="btn-sec" id="snCancelEdit">清空表单（取消修改）</button>
+            </div>
+        </div>
+
+        <p id="snStatus"></p>
+    </div>
+
+    <script src="../data/literature-site.js"></script>
+    <script src="scholar-notes-admin.js"></script>
+</body>
+</html>

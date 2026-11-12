@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 520" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="hxqWash" x1="800" y1="520" x2="800" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5eead4" stop-opacity="0.14"/>
+      <stop offset="0.45" stop-color="#bae6fd" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#f8fafc" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="hxqArch" x1="200" y1="400" x2="1400" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0f766e" stop-opacity="0.11"/>
+      <stop offset="0.5" stop-color="#0d9488" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#0ea5e9" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="520" fill="url(#hxqWash)"/>
+  <!-- 柔和“桥拱”与水面意象 -->
+  <path d="M120 420 Q800 80 1480 420" stroke="url(#hxqArch)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M100 435 Q800 110 1500 435" stroke="#0f766e" stroke-opacity="0.07" stroke-width="1.75" fill="none" stroke-linecap="round"/>
+  <path d="M160 445 L1440 445" stroke="#0ea5e9" stroke-opacity="0.06" stroke-width="1" stroke-dasharray="10 18"/>
+  <!-- 书卷 / 册页轮廓（低对比装饰） -->
+  <g opacity="0.85">
+    <rect x="180" y="260" width="72" height="100" rx="5" fill="#0f766e" fill-opacity="0.055" transform="rotate(-6 216 310)"/>
+    <rect x="1320" y="240" width="88" height="112" rx="5" fill="#0ea5e9" fill-opacity="0.05" transform="rotate(7 1364 296)"/>
+    <path d="M1230 300 L1295 292 L1298 388 L1233 396 Z" fill="#0f766e" fill-opacity="0.04"/>
+    <path d="M1188 315 L1235 308 L1238 370 L1191 377 Z" fill="#14b8a6" fill-opacity="0.035"/>
+  </g>
+  <circle cx="1280" cy="120" r="120" fill="#38bdf8" fill-opacity="0.04"/>
+  <circle cx="260" cy="140" r="90" fill="#2dd4bf" fill-opacity="0.045"/>
+</svg>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文献录入后台 · 汉学桥</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body.page-admin { padding-top: 72px; background: var(--light-bg, #f1f5f9); }
+        .admin-wrap { max-width: 1080px; margin: 0 auto; padding: 24px 16px 120px; }
+        .admin-card {
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid var(--border-color, #e2e8f0);
+            padding: 22px 22px 18px;
+            margin-bottom: 18px;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+        }
+        .admin-card h2 { font-size: 1.08rem; color: var(--primary-color, #0f766e); margin-bottom: 12px; }
+        .admin-steps { color: var(--text-muted, #64748b); font-size: 13px; line-height: 1.7; margin-bottom: 8px; }
+        .admin-badge-req {
+            display: inline-block; margin-left: 6px; padding: 1px 6px; border-radius: 4px;
+            font-size: 11px; font-weight: 600; background: #fef3c7; color: #92400e;
+        }
+        .admin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+        @media (max-width: 860px) { .admin-grid { grid-template-columns: 1fr; } }
+        .admin-field label {
+            display: block; font-size: 13px; font-weight: 600; color: var(--text-color); margin-bottom: 4px;
+        }
+        .admin-field input, .admin-field textarea, .admin-field select {
+            width: 100%; padding: 8px 10px; border-radius: 8px;
+            border: 1px solid var(--border-color); font-size: 14px; font-family: inherit;
+        }
+        .admin-field textarea { min-height: 72px; resize: vertical; }
+        .admin-field textarea.admin-area-lg { min-height: 140px; }
+        .admin-field-hint { font-size: 12px; color: var(--text-muted); margin-top: 4px; line-height: 1.45; }
+        .admin-readonly {
+            background: #f8fafc; color: #475569; font-size: 13px; padding: 8px 10px; border-radius: 8px;
+            border: 1px dashed var(--border-color);
+        }
+        .admin-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; align-items: center; }
+        .admin-actions button {
+            padding: 10px 16px; border-radius: 8px; border: none; cursor: pointer;
+            font-size: 14px; font-family: inherit;
+        }
+        .btn-primary { background: var(--primary-color, #0f766e); color: #fff; font-weight: 600; }
+        .btn-secondary { background: #e2e8f0; color: var(--text-color); font-weight: 500; }
+        .btn-warn { background: var(--accent-color, #ea580c); color: #fff; font-weight: 600; }
+        .btn-ghost { background: transparent; border: 1px solid var(--border-color); color: var(--text-color); }
+        #adminStatus { margin-top: 12px; font-size: 13px; color: var(--text-muted); min-height: 1.2em; white-space: pre-wrap; }
+        .admin-back { margin-bottom: 16px; }
+        .admin-back a { color: var(--primary-color); text-decoration: none; font-weight: 500; }
+        .admin-back a:hover { text-decoration: underline; }
+        .admin-login-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end; margin-bottom: 12px; }
+        .admin-login-row .admin-field { flex: 1; min-width: 220px; margin-bottom: 0; }
+        .admin-tabs {
+            display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px;
+            border-bottom: 1px solid var(--border-color); padding-bottom: 10px;
+        }
+        .admin-tab {
+            padding: 8px 14px; border-radius: 8px; border: 1px solid transparent;
+            background: #f1f5f9; cursor: pointer; font-size: 13px; font-family: inherit;
+        }
+        .admin-tab.is-active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+        .admin-tab-panel { display: none; }
+        .admin-tab-panel.is-active { display: block; }
+        .admin-copy-block {
+            border: 1px solid var(--border-color); border-radius: 10px; padding: 12px 14px;
+            margin-bottom: 12px; background: #fafafa;
+        }
+        .admin-copy-block h3 { font-size: 13px; color: var(--primary-color); margin-bottom: 10px; }
+        .admin-preview-wrap {
+            border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden;
+            background: #fff; min-height: 420px;
+        }
+        .admin-preview-wrap iframe { width: 100%; height: 520px; border: none; display: block; }
+        .admin-preview-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 10px 12px; background: #f8fafc; border-bottom: 1px solid var(--border-color); }
+        .admin-sticky-bar {
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+            background: rgba(255,255,255,.94); border-top: 1px solid var(--border-color);
+            padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+            box-shadow: 0 -4px 12px rgba(15,23,42,.08);
+        }
+        .admin-error-list { color: #b91c1c; font-size: 13px; margin-top: 8px; padding-left: 18px; }
+    </style>
+</head>
+<body class="page-admin">
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html" class="logo-link"><h1>汉学桥 · 录入后台</h1></a>
+                <p class="subtitle">不用懂代码：填完四种语言 → 点「一键发布」，网站立刻用上新版内容</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="admin-wrap">
+        <p class="admin-back"><a href="../index.html">← 返回首页</a> · <a href="scholar-notes-admin.html">汉学家评注管理</a></p>
+
+        <div class="admin-card">
+            <h2>使用前必读（大白话）</h2>
+            <div class="admin-steps">
+                <strong>① 怎么打开：</strong>请先用本站自带的浏览器服务打开本页（例如地址写成 <code>http://localhost:8787/admin/literature-admin.html</code>），不要用磁盘里双击出来的 <code>file://</code> 方式，否则无法保存。<br>
+                <strong>② 后台钥匙：</strong>把管理员密钥填在下面（与评论管理的密钥同一个，写在服务器的 <code>.env</code> 文件里），点「保存密钥」。<br>
+                <strong>③ 怎么填：</strong>顶部选好文献和章节。下面按「中文 → 西语 → 葡语 → 意大利语」分页填写；每一页都要填完整本书名、本章标题与简介，以及本页列出的全部正文条目。<strong>凡是带「必填」黄标的输入框都不能留空。</strong><br>
+                <strong>④ 古文格式：</strong>只在「中文」页填写模块一古文原文，要求<strong>每一句单独一行</strong>；模块三中文参照写一整段即可。<br>
+                <strong>⑤ 发布：</strong>检查预览无误后，点最下方的「一键发布到网站」。不需要再下载文件、也不需要自己去替换文件夹。
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <h2>连接后台</h2>
+            <div class="admin-login-row">
+                <div class="admin-field">
+                    <label for="adminSecretInput">管理员密钥<span class="admin-badge-req">必填</span></label>
+                    <input id="adminSecretInput" type="password" autocomplete="off" placeholder="与 server/.env 中 ADMIN_SECRET 相同">
+                </div>
+                <button type="button" class="btn-secondary" id="btnSaveSecret">保存密钥</button>
+                <button type="button" class="btn-ghost" id="btnLoadServer">从网站读取最新内容</button>
+            </div>
+            <p id="adminConnStatus" class="admin-steps"></p>
+        </div>
+
+        <div class="admin-card" id="editorCard" hidden>
+            <h2>文献与章节</h2>
+            <div class="admin-grid">
+                <div class="admin-field">
+                    <label for="workSelect">要选哪本书<span class="admin-badge-req">必填</span></label>
+                    <select id="workSelect"></select>
+                </div>
+                <div class="admin-field">
+                    <label for="chapterSelect">要选哪一章<span class="admin-badge-req">必填</span></label>
+                    <select id="chapterSelect"></select>
+                </div>
+                <div class="admin-field">
+                    <label>文献代号（自动生成）</label>
+                    <div class="admin-readonly" id="dispWorkId">—</div>
+                </div>
+                <div class="admin-field">
+                    <label>网站文件夹名（自动生成）</label>
+                    <div class="admin-readonly" id="dispWorkFolder">—</div>
+                </div>
+                <div class="admin-field">
+                    <label>本章代号（自动生成）</label>
+                    <div class="admin-readonly" id="dispChId">—</div>
+                </div>
+                <div class="admin-field">
+                    <label>本章文件夹名（自动生成）</label>
+                    <div class="admin-readonly" id="dispChSegment">—</div>
+                </div>
+                <div class="admin-field" style="grid-column: 1 / -1;">
+                    <label for="fieldKeywords">首页检索关键词<span class="admin-badge-req">必填</span></label>
+                    <input id="fieldKeywords" type="text" autocomplete="off" placeholder="多个词用空格隔开">
+                    <p class="admin-field-hint">访客在首页搜索时会用到这些词。</p>
+                </div>
+            </div>
+            <div class="admin-actions">
+                <button type="button" class="btn-warn" id="btnAddWork">新增一本新书（自动生成代号）</button>
+                <button type="button" class="btn-secondary" id="btnAddChapter">在本書下新增一章（自动生成文件夹）</button>
+            </div>
+        </div>
+
+        <div class="admin-card" id="langCard" hidden>
+            <h2>按语种填写（四种语言都要各自完整填一页）</h2>
+            <p class="admin-steps">切换顶部标签即可看到对应语种；每个语种下的书名、章节信息与正文条目都必须填写。</p>
+            <div class="admin-tabs" id="langTabs" role="tablist"></div>
+            <div id="langPanels"></div>
+        </div>
+
+        <div class="admin-card" id="previewCard" hidden>
+            <h2>网页预览</h2>
+            <p class="admin-steps">预览会打开本站真实页面（您当前正在编辑的内容请先「一键发布」或在别的标签页发布后点刷新）。</p>
+            <div class="admin-preview-bar">
+                <label class="admin-field" style="margin:0;min-width:140px;">
+                    <span style="font-size:12px;">预览页面</span>
+                    <select id="previewModule"></select>
+                </label>
+                <button type="button" class="btn-secondary" id="btnPreviewRefresh">刷新预览</button>
+                <button type="button" class="btn-ghost" id="btnPreviewOpen">新窗口打开</button>
+            </div>
+            <div class="admin-preview-wrap">
+                <iframe id="previewFrame" title="预览"></iframe>
+            </div>
+        </div>
+
+        <div class="admin-card" id="draftCard" hidden>
+            <h2>草稿与本机备份</h2>
+            <p class="admin-steps">浏览器会每隔一小段时间自动把当前表单保存到本机；您也可以手动保存或恢复，防止意外关掉网页。</p>
+            <div class="admin-actions">
+                <button type="button" class="btn-secondary" id="btnDraftSave">手动保存草稿</button>
+                <button type="button" class="btn-secondary" id="btnDraftRestore">恢复草稿</button>
+                <button type="button" class="btn-ghost" id="btnDiscardLocal">放弃草稿并从服务器重载</button>
+            </div>
+        </div>
+
+        <p id="adminStatus"></p>
+        <ul id="adminErrors" class="admin-error-list" hidden></ul>
+    </div>
+
+    <div class="admin-sticky-bar" id="stickyBar" hidden>
+        <button type="button" class="btn-primary" id="btnPublish">一键发布到网站</button>
+        <span class="admin-steps" style="margin:0;">发布后前台页面即时读取最新内容（同一浏览器请刷新或重新打开）。</span>
+    </div>
+
+    <script src="literature-admin.js"></script>
+</body>
+</html>
