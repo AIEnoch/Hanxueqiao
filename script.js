@@ -3,7 +3,7 @@
  */
 const I18N = {
     zh: {
-        docTitle: '汉学桥 - 首页 | 多语种译介与跨文化导读平台',
+        docTitle: '汉学桥 - 《道德经》多语种导读',
         catalogDocTitle: '篇目检索 - 汉学桥 | 多语种译介与跨文化导读平台',
         logoSubtitle: '多语种译介与跨文化导读平台',
         navHome: '首页',
@@ -14,31 +14,44 @@ const I18N = {
         navM5: '跨文化对比',
         navAbout: '关于我们',
         columnTitle: '试点篇目 ·《道德经》第一章',
-        heroTitle: '跨越语言之障，搭建文明桥梁',
-        heroDesc: '',
-        heroCta: '开始检索',
-        searchTitle: '篇目检索',
+        heroEyebrow: '《道德经》在线阅读与检索',
+        heroTitle: '《道德经》章节导读与多语种检索',
+        heroDesc: '搜索当前已录入章节的原文、译文与导读，或直接按章进入。',
+        homeLanguageHint: '语种按钮切换界面与已录入内容语言；对应译文请在章节页面查看。',
+        searchTitle: '检索《道德经》',
         searchLabel: '',
-        searchPlaceholder: '输入书名、章节、关键词，如：道德经、老子、第一章…',
+        searchPlaceholder: '搜索章名、原文、译文或术语，如：道可道、无为…',
+        searchInputLabel: '搜索关键词',
         searchButton: '搜索',
-        searchCharsTitle: '常用字符：',
-        searchCharsHint: '西·葡·意·拉·德通用，点击插入搜索框。',
-        searchHint: '',
-        searchNoResults: '未找到匹配篇目，可更换关键词再试。',
+        searchCharsTitle: '多语种输入辅助：',
+        searchCharsHint: '展开可选西、葡、意、拉丁语与德语字符。',
+        searchCharsExpand: '更多字符 ▼',
+        searchCharsCollapse: '收起 ▲',
+        searchHint: '检索当前开放章节中已录入的原文、译文、术语与导读；多个词需同时匹配。',
+        searchNoResults: '没有匹配到已录入内容。试试章名、原句或单个关键词。',
         searchStatusPlanned: '筹备中',
         searchReadEntry: '进入篇目',
+        chapterQuickTitle: '章节速览',
+        chapterQuickHint: '第 1–16 章已开放导读，点击章次直接进入。',
+        chapterFullCatalog: '全书目录',
+        homeEditionLabel: '版本说明',
+        homeEditionNote: '书目条目标注“马王堆帛书本”，第一章原文页则标注“传世文本”；底本口径尚待项目组核对。',
         navCatalog: '篇目目录',
         navWorkCatalogActive: '文献总览',
         chapterStripLabel: '章节',
         chapterStripPagePrev: '上一组章节',
         chapterStripPageNext: '下一组章节',
         chapterCardBadge: '章节',
-        workCatalogDaoTitle: '道经 · 1–37章',
-        workCatalogDeTitle: '德经 · 38–81章',
+        workCatalogTitle: '《道德经》目录',
+        workCatalogDaoTitle: '道经 · 1–37 章',
+        workCatalogDeTitle: '德经 · 38–81 章',
+        workCatalogOpenLabel: '已开放',
+        workCatalogSoonLabel: '待上线',
         workOverviewLead: '',
         workIntroAuthor: '作者：老子',
         workIntroEra: '时代：春秋时期',
-        workIntroVersion: '版本：马王堆帛书本',
+        workIntroExpand: '作品简介',
+        workIntroVersion: '目录按传世本八十一章编号；马王堆帛书本的分篇与章序另有差异。',
         workIntroP1:
             '《道德经》，春秋时期老子所著的哲学作品，又称《德道经》《道德真经》《老子》《五千言》《老子五千文》，是中国古代先秦诸子分家前的一部著作，是道家哲学思想的重要来源。道德经分上下两篇，原文上篇《德经》、下篇《道经》，不分章，后改为《道经》37章在前，第38章之后为《德经》，并分为81章。',
         workIntroP2:
@@ -214,7 +227,7 @@ const I18N = {
         footerCopyright: '© 2026 汉学桥项目组. 保留所有权利.'
     },
     es: {
-        docTitle: 'Puente Han - Plataforma de traducción multilingüe y guía intercultural',
+        docTitle: 'Puente Han - Lecturas multilingües del Tao Te Ching',
         catalogDocTitle: 'Catálogo de textos - Puente Han | Plataforma de traducción multilingüe',
         logoSubtitle: 'Plataforma de traducción multilingüe y guía intercultural',
         navHome: 'Inicio',
@@ -225,31 +238,44 @@ const I18N = {
         navM5: 'Comparación',
         navAbout: 'Sobre nosotros',
         columnTitle: 'Proyecto piloto: Tao Te Ching, cap. I',
-        heroTitle: 'Superar barreras lingüísticas, tender puentes entre civilizaciones',
-        heroDesc: '',
-        heroCta: 'Buscar',
-        searchTitle: 'Buscar textos',
+        heroEyebrow: 'Lectura y búsqueda · Tao Te Ching',
+        heroTitle: 'Guía por capítulos y búsqueda multilingüe del Tao Te Ching',
+        heroDesc: 'Busque el texto, las traducciones y las guías de los capítulos disponibles, o acceda directamente a un capítulo.',
+        homeLanguageHint: 'El selector cambia el idioma de la interfaz y del contenido disponible; consulte las traducciones en cada capítulo.',
+        searchTitle: 'Buscar en el Tao Te Ching',
         searchLabel: '',
-        searchPlaceholder: 'Título, capítulo o palabras clave (p. ej., Tao Te Ching, Laozi)…',
+        searchPlaceholder: 'Capítulo, texto, traducción o término (p. ej., wu wei, el Dao que puede expresarse)…',
+        searchInputLabel: 'Buscar palabras clave',
         searchButton: 'Buscar',
-        searchCharsTitle: 'Caracteres frecuentes:',
-        searchCharsHint: 'ES/PT/IT/LA/DE; toque para insertar en el buscador.',
-        searchHint: '',
-        searchNoResults: 'Sin resultados. Pruebe otras palabras clave.',
+        searchCharsTitle: 'Caracteres para escribir:',
+        searchCharsHint: 'Abra para ver caracteres de español, portugués, italiano, latín y alemán.',
+        searchCharsExpand: 'Más caracteres ▼',
+        searchCharsCollapse: 'Cerrar ▲',
+        searchHint: 'Busca en textos, traducciones, términos y guías de los capítulos disponibles; todas las palabras deben coincidir.',
+        searchNoResults: 'No se encontró contenido coincidente. Pruebe un capítulo, una frase o una sola palabra.',
         searchStatusPlanned: 'En preparación',
         searchReadEntry: 'Abrir',
+        chapterQuickTitle: 'Acceso rápido a capítulos',
+        chapterQuickHint: 'Guías disponibles para los capítulos 1–16. Seleccione un número para abrirlo.',
+        chapterFullCatalog: 'Índice completo',
+        homeEditionLabel: 'Nota sobre la edición',
+        homeEditionNote: 'La ficha indica el manuscrito de seda de Mawangdui, mientras que la página del capítulo I indica el texto recibido; la base textual debe verificarse.',
         navCatalog: 'Catálogo',
         navWorkCatalogActive: 'Panorama de la obra',
         chapterStripLabel: 'Capítulos',
         chapterStripPagePrev: 'Capítulos anteriores',
         chapterStripPageNext: 'Capítulos siguientes',
         chapterCardBadge: 'Capítulo',
+        workCatalogTitle: 'Índice del Tao Te Ching',
         workCatalogDaoTitle: 'Clásico del Camino (Dao) · cap. 1–37',
         workCatalogDeTitle: 'Clásico de la Virtud (De) · cap. 38–81',
+        workCatalogOpenLabel: 'Disponible',
+        workCatalogSoonLabel: 'Próximamente',
         workOverviewLead: '',
         workIntroAuthor: 'Autor: Laozi',
         workIntroEra: 'Época: Periodo de Primavera y Otoño',
-        workIntroVersion: 'Versión: Manuscrito de seda de Mawangdui',
+        workIntroExpand: 'Acerca de la obra',
+        workIntroVersion: 'Este catálogo sigue la edición recibida en 81 capítulos; la división y el orden del manuscrito de seda de Mawangdui difieren.',
         workIntroP1:
             'El Tao Te Ching es una obra filosófica escrita por Laozi durante el Periodo de Primavera y Otoño. También se conoce como Clásico de la Virtud y del Camino, Verdadero Clásico de la Virtud y del Camino, Laozi, Cinco Mil Palabras y Texto de Cinco Mil Palabras de Laozi. Es una obra anterior a la división de las escuelas filosóficas en la antigua China y constituye una fuente esencial del pensamiento daoísta. El texto se divide en dos partes: en la versión primitiva la sección superior era el Clásico de la Virtud (De) y la inferior el Clásico del Camino (Dao), sin división en capítulos; más tarde se reordenó colocando 37 capítulos del Clásico del Camino al inicio y el Clásico de la Virtud a partir del capítulo 38, totalizando 81 capítulos.',
         workIntroP2:
@@ -417,7 +443,7 @@ const I18N = {
         footerCopyright: '© 2026 Proyecto Puente Han. Todos los derechos reservados.'
     },
     pt: {
-        docTitle: 'Ponte Han - Plataforma de tradução multilingue e guia intercultural',
+        docTitle: 'Ponte Han - Leituras multilingues do Tao Te Ching',
         catalogDocTitle: 'Catálogo de textos - Ponte Han | Plataforma de tradução multilingue',
         logoSubtitle: 'Plataforma de tradução multilingue e guia intercultural',
         navHome: 'Início',
@@ -428,31 +454,44 @@ const I18N = {
         navM5: 'Comparação',
         navAbout: 'Sobre nós',
         columnTitle: 'Projeto piloto: Tao Te Ching, cap. I',
-        heroTitle: 'Superar barreiras linguísticas, construir pontes entre civilizações',
-        heroDesc: '',
-        heroCta: 'Pesquisar',
-        searchTitle: 'Pesquisa de textos',
+        heroEyebrow: 'Leitura e pesquisa · Tao Te Ching',
+        heroTitle: 'Guia por capítulos e pesquisa multilíngue do Tao Te Ching',
+        heroDesc: 'Pesquise textos, traduções e guias dos capítulos disponíveis, ou acesse diretamente um capítulo.',
+        homeLanguageHint: 'O seletor muda o idioma da interface e do conteúdo disponível; consulte as traduções em cada capítulo.',
+        searchTitle: 'Pesquisar no Tao Te Ching',
         searchLabel: '',
-        searchPlaceholder: 'Título, capítulo ou palavras-chave…',
+        searchPlaceholder: 'Capítulo, texto, tradução ou termo (por exemplo, wu wei, o Dao que pode ser expresso)…',
+        searchInputLabel: 'Pesquisar palavras-chave',
         searchButton: 'Pesquisar',
-        searchCharsTitle: 'Caracteres usuais:',
-        searchCharsHint: 'ES/PT/IT/LA/DE; clique para inserir na pesquisa.',
-        searchHint: '',
-        searchNoResults: 'Sem resultados. Tente outros termos.',
+        searchCharsTitle: 'Caracteres para inserir:',
+        searchCharsHint: 'Abra para ver caracteres de espanhol, português, italiano, latim e alemão.',
+        searchCharsExpand: 'Mais caracteres ▼',
+        searchCharsCollapse: 'Fechar ▲',
+        searchHint: 'Pesquisa textos, traduções, termos e guias dos capítulos disponíveis; todas as palavras devem corresponder.',
+        searchNoResults: 'Nenhum conteúdo correspondente. Tente um capítulo, um trecho ou uma palavra.',
         searchStatusPlanned: 'Em preparação',
         searchReadEntry: 'Abrir',
+        chapterQuickTitle: 'Acesso rápido aos capítulos',
+        chapterQuickHint: 'Guias disponíveis para os capítulos 1–16. Selecione um número para abrir.',
+        chapterFullCatalog: 'Índice completo',
+        homeEditionLabel: 'Nota sobre a edição',
+        homeEditionNote: 'A ficha indica o manuscrito de seda de Mawangdui, enquanto a página do capítulo I indica o texto recebido; a base textual precisa ser verificada.',
         navCatalog: 'Catálogo',
         navWorkCatalogActive: 'Panorama da obra',
         chapterStripLabel: 'Capítulos',
         chapterStripPagePrev: 'Capítulos anteriores',
         chapterStripPageNext: 'Capítulos siguientes',
         chapterCardBadge: 'Capítulo',
+        workCatalogTitle: 'Índice do Tao Te Ching',
         workCatalogDaoTitle: 'Clássico do Caminho (Dao) · cap. 1–37',
         workCatalogDeTitle: 'Clássico da Virtude (De) · cap. 38–81',
+        workCatalogOpenLabel: 'Disponível',
+        workCatalogSoonLabel: 'Em breve',
         workOverviewLead: '',
         workIntroAuthor: 'Autor: Laozi',
         workIntroEra: 'Época: Período das Primaveras e Outonos',
-        workIntroVersion: 'Versão: Manuscrito de seda de Mawangdui',
+        workIntroExpand: 'Sobre a obra',
+        workIntroVersion: 'Este catálogo segue a edição recebida em 81 capítulos; a divisão e a ordem do manuscrito de seda de Mawangdui são diferentes.',
         workIntroP1:
             'O Tao Te Ching é uma obra filosófica escrita por Laozi durante o Período das Primaveras e Outonos. Também é conhecido como Clássico da Virtude e do Caminho, Verdadeiro Clássico da Virtude e do Caminho, Laozi, Cinco Mil Palavras e Texto de Cinco Mil Palavras de Laozi. É uma obra anterior à divisão das escolas filosóficas na antiga China e constitui uma fonte essencial do pensamento daoísta. O texto divide-se em duas partes: na versão primitiva a seção superior era o Clássico da Virtude (De) e a inferior o Clássico do Caminho (Dao), sem divisão em capítulos; mais tarde reordenou-se colocando 37 capítulos do Clássico do Caminho no início e o Clássico da Virtude a partir do capítulo 38, totalizando 81 capítulos.',
         workIntroP2:
@@ -596,7 +635,7 @@ const I18N = {
         termRow5b: 'Limite/borda ligada ao olhar «com desejo».'
     },
     it: {
-        docTitle: 'Ponte Han - Piattaforma di traduzione multilingue e guida interculturale',
+        docTitle: 'Ponte Han - Letture multilingui del Tao Te Ching',
         catalogDocTitle: 'Catalogo testi - Ponte Han | Piattaforma di traduzione multilingue',
         logoSubtitle: 'Piattaforma di traduzione multilingue e guida interculturale',
         navHome: 'Home',
@@ -607,31 +646,44 @@ const I18N = {
         navM5: 'Confronto',
         navAbout: 'Chi siamo',
         columnTitle: 'Pilota: Tao Te Ching, cap. I',
-        heroTitle: 'Superare le barriere linguistiche, costruire ponti tra civiltà',
-        heroDesc: '',
-        heroCta: 'Cerca',
-        searchTitle: 'Ricerca testi',
+        heroEyebrow: 'Lettura e ricerca · Tao Te Ching',
+        heroTitle: 'Guida ai capitoli e ricerca multilingue del Tao Te Ching',
+        heroDesc: 'Cerca testi, traduzioni e guide dei capitoli disponibili, oppure apri direttamente un capitolo.',
+        homeLanguageHint: 'Il selettore cambia la lingua dell’interfaccia e dei contenuti disponibili; le traduzioni si trovano nei capitoli.',
+        searchTitle: 'Cerca nel Tao Te Ching',
         searchLabel: '',
-        searchPlaceholder: 'Titolo, capitolo o parole chiave…',
+        searchPlaceholder: 'Capitolo, testo, traduzione o termine (ad es. wu wei, il Dao che si può esprimere)…',
+        searchInputLabel: 'Cerca parole chiave',
         searchButton: 'Cerca',
-        searchCharsTitle: 'Caratteri comuni:',
-        searchCharsHint: 'ES/PT/IT/LA/DE; clic per inserire nella ricerca.',
-        searchHint: '',
-        searchNoResults: 'Nessun risultato. Provare altri termini.',
+        searchCharsTitle: 'Caratteri da inserire:',
+        searchCharsHint: 'Apri per i caratteri di spagnolo, portoghese, italiano, latino e tedesco.',
+        searchCharsExpand: 'Altri caratteri ▼',
+        searchCharsCollapse: 'Chiudi ▲',
+        searchHint: 'Cerca nei testi, nelle traduzioni, nei termini e nelle guide dei capitoli disponibili; tutte le parole devono corrispondere.',
+        searchNoResults: 'Nessun contenuto corrispondente. Prova con un capitolo, un brano o una parola.',
         searchStatusPlanned: 'In preparazione',
         searchReadEntry: 'Apri',
+        chapterQuickTitle: 'Accesso rapido ai capitoli',
+        chapterQuickHint: 'Guide disponibili per i capitoli 1–16. Seleziona un numero per aprirlo.',
+        chapterFullCatalog: 'Indice completo',
+        homeEditionLabel: 'Nota sull’edizione',
+        homeEditionNote: 'La scheda indica il manoscritto su seta di Mawangdui, mentre la pagina del capitolo I indica il testo ricevuto; la base testuale va verificata.',
         navCatalog: 'Catalogo',
         navWorkCatalogActive: 'Panoramica dell\'opera',
         chapterStripLabel: 'Capitoli',
         chapterStripPagePrev: 'Capitoli precedenti',
         chapterStripPageNext: 'Capitoli successivi',
         chapterCardBadge: 'Capitolo',
+        workCatalogTitle: 'Indice del Tao Te Ching',
         workCatalogDaoTitle: 'Classico del Cammino (Dao) · cap. 1–37',
         workCatalogDeTitle: 'Classico della Virtù (De) · cap. 38–81',
+        workCatalogOpenLabel: 'Disponibile',
+        workCatalogSoonLabel: 'In arrivo',
         workOverviewLead: '',
         workIntroAuthor: 'Autore: Laozi',
         workIntroEra: 'Epoca: Periodo di Primavera e Autunno',
-        workIntroVersion: 'Versione: Manoscritto di seta di Mawangdui',
+        workIntroExpand: "Sull'opera",
+        workIntroVersion: 'Questo catalogo segue la versione ricevuta in 81 capitoli; la suddivisione e l’ordine del manoscritto su seta di Mawangdui sono diversi.',
         workIntroP1:
             'Il Tao Te Ching è un\'opera filosofica scritta da Laozi durante il Periodo di Primavera e Autunno. È noto anche come Classico della Virtù e del Cammino, Vero Classico della Virtù e del Cammino, Laozi, Cinque Mila Parole e Testo di Cinque Mila Parole di Laozi. È un\'opera anteriore alla scissione delle scuole filosofiche nella Cina antica e costituisce una fonte essenziale del pensiero daoista. Il testo si divide in due parti: nella versione primitiva la sezione superiore era il Classico della Virtù (De) e quella inferiore il Classico del Cammino (Dao), senza divisione in capitoli; in seguito fu riordinato collocando 37 capitoli del Classico del Cammino all\'inizio e il Classico della Virtù dal capitolo 38, per un totale di 81 capitoli.',
         workIntroP2:
@@ -775,7 +827,7 @@ const I18N = {
         termRow5b: 'Limite/bordo legato allo sguardo «con desiderio».'
     },
     la: {
-        docTitle: 'Pons Han - Pagina Interretialis',
+        docTitle: 'Pons Han - Lectura intercultural Dao De Jing',
         catalogDocTitle: 'Catalogus textuum - Pons Han | Suggestus interpretationis multilinguis',
         logoSubtitle: 'Suggestus interpretationis multilinguis et ductus interculturalis',
         navHome: 'Initium',
@@ -787,28 +839,42 @@ const I18N = {
         navWorkCatalogActive: 'Conspectus operis',
         navCatalog: 'Catalogus',
         navAbout: 'De nobis',
-        heroTitle: 'Pontes inter linguas et culturas',
-        heroDesc: '',
-        searchTitle: 'Quaestio textuum',
+        heroEyebrow: 'Lectio et inquisitio · Dao De Jing',
+        heroTitle: 'Dux capitulorum et inquisitio multilinguis Dao De Jing',
+        heroDesc: 'Quaere textum, versiones et commentaria capitulorum praesto, aut caput directe aperi.',
+        homeLanguageHint: 'Index linguam instrumentorum et rerum praesto mutat; versiones in singulis capitulis inspice.',
+        searchTitle: 'In Dao De Jing quaerere',
         searchLabel: '',
-        searchPlaceholder: 'Inserere titulum, capitulum, vel verbum clavis…',
+        searchPlaceholder: 'Capitulum, textum, versionem vel vocabulum quaere (exempli gratia: wu wei, Via quae dici potest)…',
+        searchInputLabel: 'Verba clavis quaere',
         searchButton: 'Quaere',
-        searchCharsTitle: 'Characteres usitati:',
-        searchCharsHint: 'ES/PT/IT/LA/DE communes; preme ut in campum quaestionis inseras.',
-        searchHint: '',
-        searchNoResults: 'Nihil congruens inventum est. Aliis verbis clavibus tenta.',
+        searchCharsTitle: 'Characteres inserendi:',
+        searchCharsHint: 'Aperi characteres Hispanicos, Lusitanos, Italicos, Latinos et Germanicos.',
+        searchCharsExpand: 'Plures characteres ▼',
+        searchCharsCollapse: 'Claude ▲',
+        searchHint: 'Quaere in textibus, versionibus, vocabulis et commentariis capitulorum praesto; omnia verba congruere debent.',
+        searchNoResults: 'Nihil congruens inventum. Aliud capitulum, locum vel unum verbum tempta.',
         searchStatusPlanned: 'In praeparatione',
         searchReadEntry: 'Aperi',
+        chapterQuickTitle: 'Capitula celeriter aperire',
+        chapterQuickHint: 'Commentaria capitulorum 1–16 praesto sunt. Numerum elige ut aperias.',
+        chapterFullCatalog: 'Index plenus',
+        homeEditionLabel: 'De editione',
+        homeEditionNote: 'Catalogus codicem sericum Mawangdui indicat, sed pagina capitis I textum receptum nominat; fundamentum textuale adhuc verificandum est.',
         chapterStripLabel: 'Capitula',
         chapterStripPagePrev: 'Capitula priora',
         chapterStripPageNext: 'Capitula sequentia',
         chapterCardBadge: 'Caput',
+        workCatalogTitle: 'Index Dao De Jing',
         workCatalogDaoTitle: 'Classis Viae (Dao) · cap. 1–37',
         workCatalogDeTitle: 'Classis Virtutis (De) · cap. 38–81',
+        workCatalogOpenLabel: 'Apertum',
+        workCatalogSoonLabel: 'Mox aperiendum',
         workOverviewLead: '',
         workIntroAuthor: 'Auctor: Laozi',
         workIntroEra: 'Aetas: Tempus Vernum et Autumnale',
-        workIntroVersion: 'Editio: Codex sericus e Mawangdui',
+        workIntroExpand: 'De opere',
+        workIntroVersion: 'Hic catalogus secundum textum receptum in octoginta unum capita ordinatur; divisio et ordo codicis serici Mawangdui aliter sunt.',
         workIntroP1:
             'Dao De Jing est opus philosophicum a Laozi in Tempore Verno et Autumnali conscriptum. Vocatur etiam Classis Virtutis et Viae, Vera Classis Virtutis et Viae, Laozi, Quinque Mille Verba et Textus Quinque Milium Verborum Laozi. Est opus ante scissionem scholarum philosophicarum in Sinis antiquis et fons capitalis cogitationis Daoisticae. Textus in duas partes dividitur: in versione primitiva pars superior erat Classis Virtutis (De), inferior Classis Viae (Dao), sine divisione in capita; postea reordinatum est ut 37 capita Classis Viae in fronte stent et Classis Virtutis a capite 38 incipiat, octoginta uno capitibus composita.',
         workIntroP2:
@@ -953,7 +1019,7 @@ const I18N = {
         footerCopyright: '© 2026 Grex Pons Han. Iura reservata.'
     },
     de: {
-        docTitle: 'Han-Brücke - Mehrsprachige Übersetzungs- und interkulturelle Leitplattform',
+        docTitle: 'Han-Brücke - Mehrsprachige Lektüren des Tao Te King',
         catalogDocTitle: 'Textkatalog - Han-Brücke | Mehrsprachige Übersetzungsplattform',
         logoSubtitle: 'Mehrsprachige Übersetzungs- und interkulturelle Leitplattform',
         navHome: 'Startseite',
@@ -968,12 +1034,16 @@ const I18N = {
         chapterStripPagePrev: 'Vorherige Kapitelgruppe',
         chapterStripPageNext: 'Nächste Kapitelgruppe',
         chapterCardBadge: 'Kapitel',
+        workCatalogTitle: 'Inhaltsverzeichnis des Dao De Jing',
         workCatalogDaoTitle: 'Klassiker des Weges (Dao) · Kap. 1–37',
         workCatalogDeTitle: 'Klassiker der Tugend (De) · Kap. 38–81',
+        workCatalogOpenLabel: 'Verfügbar',
+        workCatalogSoonLabel: 'Demnächst',
         workOverviewLead: '',
         workIntroAuthor: 'Autor: Laozi',
         workIntroEra: 'Zeit: Frühling- und Herbstzeit',
-        workIntroVersion: 'Fassung: Seidentext-Manuskript von Mawangdui',
+        workIntroExpand: 'Über das Werk',
+        workIntroVersion: 'Dieser Katalog folgt der überlieferten Fassung mit 81 Kapiteln; die Gliederung und Reihenfolge des Seidenmanuskripts von Mawangdui weichen ab.',
         workIntroP1:
             'Das Tao Te Ching ist ein philosophisches Werk, das Laozi in der Frühling- und Herbstzeit verfasste. Es ist auch bekannt als Klassiker der Tugend und des Weges, Wahrer Klassiker der Tugend und des Weges, Laozi, Fünftausend Worte und Fünftausend-Worte-Text des Laozi. Es ist ein Werk vor der Aufspaltung der philosophischen Schulen im alten China und eine wesentliche Quelle daoistischen Denkens. Der Text gliedert sich in zwei Teile: In der ursprünglichen Fassung bildete der obere Teil den Klassiker der Tugend (De) und der untere den Klassiker des Weges (Dao), ohne Kapitelteilung; später wurde umgeordnet, sodass 37 Kapitel des Klassikers des Weges voranstehen und der Klassiker der Tugend ab Kapitel 38 folgt — insgesamt 81 Kapitel.',
         workIntroP2:
@@ -1043,18 +1113,28 @@ const I18N = {
         youText: 'You steht für das Erscheinende und Bestimmte; Wu und You entstehen in wechselseitiger Beziehung.',
         guideP1: 'Dieses Kapitel entfaltet Dao-Ming-You-Wu als zentrales Strukturgefuge: Zunachst gilt es, die Spannung zwischen dem aussprechbaren Dao/Namen und dem konstanten Dao/Namen zu erfassen; danach wird die Gegenuberstellung von "namenlos" als Ursprung von Himmel und Erde und "benannt" als Mutter der zehntausend Dinge verstandlich.',
         guideP2: 'Es empfiehlt sich, "das Wunder schauen" und "die Grenze schauen" als zwei Erkenntnishaltungen zu lesen: die erste betont stille Kontemplation und Verinnerlichung, die zweite Analyse und Unterscheidung. Beide entspringen derselben Quelle, tragen jedoch verschiedene Benennungen.',
-        heroTitle: 'Sprachbarrieren überwinden, Brücken zwischen Zivilisationen bauen',
-        heroDesc: '',
-        searchTitle: 'Textsuche',
+        heroEyebrow: 'Lesen und suchen · Tao Te King',
+        heroTitle: 'Kapitelübersicht und mehrsprachige Suche im Tao Te King',
+        heroDesc: 'Suchen Sie in Texten, Übersetzungen und Erläuterungen der verfügbaren Kapitel oder öffnen Sie ein Kapitel direkt.',
+        homeLanguageHint: 'Die Sprachauswahl ändert Oberfläche und verfügbare Inhalte; Übersetzungen finden Sie in den Kapiteln.',
+        searchTitle: 'Im Tao Te King suchen',
         searchLabel: '',
-        searchPlaceholder: 'Titel, Kapitel oder Stichwörter eingeben, z. B. Tao Te Ching, Laozi, Kapitel 1 ...',
+        searchPlaceholder: 'Kapitel, Text, Übersetzung oder Begriff suchen, z. B. Wu Wei oder der aussprechbare Dao ...',
+        searchInputLabel: 'Suchbegriffe',
         searchButton: 'Suchen',
-        searchCharsTitle: 'Häufige Zeichen:',
-        searchCharsHint: 'ES/PT/IT/LA/DE; zum Einfügen in das Suchfeld klicken.',
-        searchHint: '',
-        searchNoResults: 'Keine passenden Beiträge gefunden. Bitte andere Stichwörter versuchen.',
+        searchCharsTitle: 'Sonderzeichen einfügen:',
+        searchCharsHint: 'Weitere Zeichen für Spanisch, Portugiesisch, Italienisch, Latein und Deutsch anzeigen.',
+        searchCharsExpand: 'Weitere Zeichen ▼',
+        searchCharsCollapse: 'Schließen ▲',
+        searchHint: 'Durchsucht Texte, Übersetzungen, Begriffe und Erläuterungen verfügbarer Kapitel; alle Wörter müssen vorkommen.',
+        searchNoResults: 'Keine passenden Inhalte. Versuchen Sie ein Kapitel, eine Textstelle oder ein einzelnes Wort.',
         searchStatusPlanned: 'In Vorbereitung',
         searchReadEntry: 'Öffnen',
+        chapterQuickTitle: 'Kapitel-Schnellzugriff',
+        chapterQuickHint: 'Für Kapitel 1–16 sind Lesehilfen verfügbar. Wählen Sie eine Nummer zum Öffnen.',
+        chapterFullCatalog: 'Vollständiges Inhaltsverzeichnis',
+        homeEditionLabel: 'Textgrundlage',
+        homeEditionNote: 'Der Katalog nennt das Seidenmanuskript von Mawangdui, die Seite zu Kapitel I dagegen den überlieferten Text; die Textgrundlage muss noch geprüft werden.',
         module5Badge: 'Modul 5',
         module5Title: 'Interkulturelle Vergleichssynthese',
         module5Subtitle: 'Interkulturelle Kernpunkte · Lateinische Herleitung · ES/PT/IT/DE-Vokabularvergleich · Denkstile',
@@ -1267,6 +1347,7 @@ function updateLanguageContent(lang) {
     applyWorkHubUi(lang);
     refreshChapterNavLabels(lang);
     setTranslationVisibility(lang);
+    updateSearchCharToggleLabel();
     try {
         window.dispatchEvent(new CustomEvent('hanqiao:ui-lang', { detail: { lang: lang } }));
     } catch (e) {
@@ -1445,18 +1526,16 @@ function buildWorkChapterMap(chapters) {
 
 function renderWorkChapterCard(num, ch, lang) {
     const title = formatWorkChapterTitle(num, lang);
+    const number = String(num).padStart(2, '0');
     if (ch && ch.href) {
         const href = withLangParam(ch.href, lang);
         return (
-            `<a href="${escapeHtml(href)}" class="hub-card work-chapter-card">` +
-            `<strong class="hub-card-title">${escapeHtml(title)}</strong>` +
-            `</a>`
+            `<a href="${escapeHtml(href)}" class="hub-card work-chapter-card" aria-label="${escapeHtml(title)}">` +
+            `<span class="work-chapter-number">${number}</span></a>`
         );
     }
     return (
-        `<span class="hub-card work-chapter-card work-chapter-card--soon" aria-disabled="true">` +
-        `<strong class="hub-card-title">${escapeHtml(title)}</strong>` +
-        `</span>`
+        `<span class="hub-card work-chapter-card"><span class="work-chapter-number">${number}</span></span>`
     );
 }
 
@@ -1485,7 +1564,7 @@ function applyWorkHubUi(lang) {
         return;
     }
     const dict = getI18nDict(lang);
-    heading.textContent = articlePickLang(meta.title, lang) || '';
+    heading.textContent = dict.workCatalogTitle || '《道德经》目录';
 
     const chapterMap = buildWorkChapterMap(meta.chapters || []);
     grid.innerHTML =
@@ -1551,7 +1630,7 @@ function articlePickLang(obj, lang) {
     return obj.zh || '';
 }
 
-function articleMatchesQuery(article, q) {
+function articleMatchesQuery(article, q, includeChapterHay = true) {
     const needle = q.trim().toLowerCase();
     if (!needle) return true;
     const searchBlob =
@@ -1561,7 +1640,7 @@ function articleMatchesQuery(article, q) {
               ? article.searchText
               : Object.values(article.searchText).join(' ');
     let chapterHay = '';
-    if (article.kind === 'work' && Array.isArray(article.chapters)) {
+    if (includeChapterHay && article.kind === 'work' && Array.isArray(article.chapters)) {
         chapterHay = article.chapters
             .flatMap((ch) => [
                 ch.chapterWorkId || '',
@@ -1596,7 +1675,15 @@ function renderArticleSearchResults() {
     const lang = getUiLang();
     const dict = getI18nDict(lang);
     const q = input ? input.value : '';
-    const list = window.ARTICLES.filter((a) => articleMatchesQuery(a, q));
+    const list = q.trim()
+        ? window.ARTICLES.flatMap((work) => {
+              const matchingChapters = (work.chapters || []).filter((chapter) =>
+                  articleMatchesQuery(chapter, q)
+              );
+              if (matchingChapters.length) return matchingChapters;
+              return articleMatchesQuery(work, q, false) ? [work] : [];
+          })
+        : [];
 
     const renderList = (items) =>
         '<ul class="search-results-list">' +
@@ -1614,7 +1701,6 @@ function renderArticleSearchResults() {
                         `<a class="search-result-main" href="${hubUrl}"><strong>${escapeHtml(title)}</strong>` +
                         descHtml +
                         `</a>` +
-                        `<a class="search-result-side" href="${hubUrl}">${escapeHtml(dict.searchReadEntry || '')}</a>` +
                         `</li>`
                     );
                 }
@@ -1633,9 +1719,7 @@ function renderArticleSearchResults() {
 
     if (!q.trim()) {
         const hint = dict.searchHint && String(dict.searchHint).trim();
-        container.innerHTML =
-            (hint ? `<p class="search-results-meta">${escapeHtml(hint)}</p>` : '') +
-            renderList(window.ARTICLES);
+        container.innerHTML = hint ? `<p class="search-results-meta">${escapeHtml(hint)}</p>` : '';
     } else if (!list.length) {
         container.innerHTML = `<p class="search-results-empty">${escapeHtml(dict.searchNoResults || '')}</p>`;
     } else {
@@ -1697,6 +1781,17 @@ function initSearchCharPicker() {
     });
 }
 
+function updateSearchCharToggleLabel() {
+    const panel = document.querySelector('.search-chars');
+    const toggle = panel && panel.querySelector('[data-char-toggle]');
+    if (!panel || !toggle) return;
+    const dict = getI18nDict(getUiLang());
+    const open = panel.classList.contains('is-expanded');
+    toggle.textContent = open
+        ? dict.searchCharsCollapse || '收起 ▲'
+        : dict.searchCharsExpand || '更多字符 ▼';
+}
+
 function initSearchCharToggle() {
     const panel = document.querySelector('.search-chars');
     const toggle = panel && panel.querySelector('[data-char-toggle]');
@@ -1704,13 +1799,10 @@ function initSearchCharToggle() {
     if (toggle.dataset.boundToggle === '1') return;
     toggle.dataset.boundToggle = '1';
 
-    const expandLabel = toggle.getAttribute('data-expand-label') || '展开全部 ▼';
-    const collapseLabel = toggle.getAttribute('data-collapse-label') || '收起 ▲';
-
     const setOpen = function (open) {
         panel.classList.toggle('is-expanded', open);
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        toggle.textContent = open ? collapseLabel : expandLabel;
+        updateSearchCharToggleLabel();
     };
 
     setOpen(false);

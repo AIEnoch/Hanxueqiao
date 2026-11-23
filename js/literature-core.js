@@ -65,6 +65,18 @@
         return 3;
     };
 
+    function collectSearchText(value, key = '') {
+        if (/^(workShelfTitle|hubPageTitle|module\d+Subtitle)$/i.test(key)) return '';
+        if (typeof value === 'string') return value.replace(/<[^>]*>/g, ' ');
+        if (Array.isArray(value)) return value.map((item) => collectSearchText(item)).join(' ');
+        if (value && typeof value === 'object') {
+            return Object.entries(value)
+                .map(([childKey, childValue]) => collectSearchText(childValue, childKey))
+                .join(' ');
+        }
+        return '';
+    }
+
     /**
      * 由 LITERATURE_SITE 生成首页检索用的 window.ARTICLES 结构（与旧版一致）
      */
@@ -75,18 +87,24 @@
         for (const work of site.works) {
             if (!work || !work.id || !work.folder) continue;
             const chapters = Array.isArray(work.chapters) ? work.chapters : [];
+            const titleZh = window.HANQIAO.pickLang(work.title, 'zh') || '';
+            const workLabel = titleZh.replace(/^《|》$/g, '').trim() || work.id;
             const chapterEntries = chapters.map(function (ch) {
+                const chapterContent = site.modulesByChapterId?.[ch.id] || {};
+                const chapterCopy = window.WORK_COPY?.[ch.id] || {};
                 return {
+                    kind: 'chapter',
+                    id: ch.id,
                     chapterWorkId: ch.id,
                     pathSegment: ch.segment,
                     hub: 'articles/' + work.folder + '/' + ch.segment + '/index.html',
+                    available: true,
+                    chapter: ch.segment,
                     title: ch.title || {},
-                    summary: ch.summary || {}
+                    summary: ch.summary || {},
+                    searchText: collectSearchText([chapterContent, chapterCopy])
                 };
             });
-
-            const titleZh = window.HANQIAO.pickLang(work.title, 'zh') || '';
-            const workLabel = titleZh.replace(/^《|》$/g, '').trim() || work.id;
 
             out.push({
                 kind: 'work',

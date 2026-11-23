@@ -19,11 +19,10 @@
                     </li>
                     <li>
                         <a
-                            :href="isHome ? '#search' : 'index.html#search'"
+                            href="articles/ddj/index.html"
                             class="nav-link"
                             :class="{ active: false }"
                             data-i18n="navCatalog"
-                            @click.prevent="goCatalog"
                         >篇目目录</a>
                     </li>
                     <li>
@@ -42,7 +41,7 @@
                 <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">Español</button>
                 <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">Português</button>
                 <button type="button" class="lang-btn" data-lang="it" aria-pressed="false">Italiano</button>
-                <button type="button" class="lang-btn" data-lang="la" aria-pressed="false">Latina</button>
+                <button type="button" class="lang-btn" data-lang="la" aria-pressed="false">Latin</button>
                 <button type="button" class="lang-btn" data-lang="de" aria-pressed="false">Deutsch</button>
             </div>
         </div>
@@ -50,7 +49,7 @@
 </template>
 
 <script setup>
-import { computed, nextTick } from 'vue';
+import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute();
@@ -67,17 +66,4 @@ function goAbout() {
     router.push({ path: '/about.html', query: route.query });
 }
 
-async function goCatalog() {
-    if (!isHome.value) {
-        await router.push({ path: '/index.html', hash: '#search', query: route.query });
-        return;
-    }
-    if (route.hash !== '#search') {
-        await router.push({ path: '/index.html', hash: '#search', query: route.query });
-    }
-    await nextTick();
-    if (window.HANQIAO && typeof window.HANQIAO.scrollToSearchSection === 'function') {
-        window.HANQIAO.scrollToSearchSection();
-    }
-}
 </script>

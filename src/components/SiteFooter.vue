@@ -9,7 +9,7 @@
                 </div>
                 <div class="footer-links">
                     <a href="index.html" data-i18n="footerHome" @click.prevent="goHome">首页</a>
-                    <a :href="isHome ? '#search' : 'index.html#search'" data-i18n="navCatalog" @click.prevent="goCatalog">篇目目录</a>
+                    <a href="articles/ddj/index.html" data-i18n="navCatalog">篇目目录</a>
                     <a
                         v-if="isHome"
                         href="admin/literature-admin.html"
@@ -29,7 +29,6 @@
 
 <script setup>
 import { useRoute, useRouter } from 'vue-router';
-import { nextTick } from 'vue';
 
 defineProps({
     isHome: {
@@ -49,17 +48,4 @@ function goAbout() {
     router.push({ path: '/about.html', query: route.query });
 }
 
-async function goCatalog() {
-    if (route.path !== '/' && route.path !== '/index.html') {
-        await router.push({ path: '/index.html', hash: '#search', query: route.query });
-        return;
-    }
-    if (route.hash !== '#search') {
-        await router.push({ path: '/index.html', hash: '#search', query: route.query });
-    }
-    await nextTick();
-    if (window.HANQIAO && typeof window.HANQIAO.scrollToSearchSection === 'function') {
-        window.HANQIAO.scrollToSearchSection();
-    }
-}
 </script>

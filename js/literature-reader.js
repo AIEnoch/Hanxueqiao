@@ -479,9 +479,8 @@
         });
         return (
             '<div class="article-context">' +
-            '<div class="container">' +
             segs.join('<span class="article-context-sep">/</span>') +
-            '</div></div>'
+            '</div>'
         );
     }
 
@@ -515,8 +514,7 @@
         return (b && b.getAttribute('data-lang')) || 'zh';
     }
 
-    function buildChapterStripLinks(chapters, fromSeg, baseFile, initialPage) {
-        const HQ = window.HANQIAO;
+    function buildChapterStripOptions(chapters, fromSeg, baseFile) {
         const bySegment = {};
         (chapters || []).forEach(function (ch) {
             if (ch && ch.segment) bySegment[ch.segment] = ch;
@@ -524,92 +522,38 @@
         let html = '';
         for (let n = 1; n <= 81; n++) {
             const segment = 'chapter-' + n;
-            const page = HQ.chapterPageIndex(n);
-            const label = String(n);
+            const label = String(n).padStart(2, '0');
             const ch = bySegment[segment];
-            const active = segment === fromSeg ? ' is-active' : '';
-            const hidden = page !== initialPage ? ' hidden' : '';
+            const selected = segment === fromSeg ? ' selected' : '';
             if (ch) {
                 html +=
-                    '<a href="' +
+                    '<option value="' +
                     esc(stripHref(fromSeg, segment, baseFile)) +
-                    '" class="chapter-strip-link' +
-                    active +
-                    '" data-chapter-page="' +
-                    page +
-                    '" data-chapter-num="' +
-                    n +
                     '"' +
-                    hidden +
+                    selected +
                     '>' +
-                    esc(label) +
-                    '</a>';
+                    label +
+                    '</option>';
             } else {
                 html +=
-                    '<span class="chapter-strip-link chapter-strip-link--soon' +
-                    active +
-                    '" data-chapter-page="' +
-                    page +
-                    '" data-chapter-num="' +
-                    n +
-                    '" aria-disabled="true"' +
-                    hidden +
+                    '<option disabled' +
+                    selected +
                     '>' +
-                    esc(label) +
-                    '</span>';
+                    label +
+                    '</option>';
             }
         }
         return html;
     }
 
-    function scrollVisibleChapterLinkIntoView(strip) {
-        if (!strip) return;
-        const active = strip.querySelector('.chapter-strip-link.is-active:not([hidden])');
-        const target = active || strip.querySelector('.chapter-strip-link:not([hidden])');
-        if (!target) return;
-        try {
-            target.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'instant' });
-        } catch (e) {
-            target.scrollIntoView(true);
-        }
-    }
-
-    function setChapterStripPage(strip, pageIdx) {
-        if (!strip) return;
-        const maxPage = 3;
-        const idx = Math.max(0, Math.min(maxPage, pageIdx));
-        strip.setAttribute('data-chapter-page-active', String(idx));
-        strip.querySelectorAll('[data-chapter-page][data-chapter-num]').forEach(function (el) {
-            const page = parseInt(el.getAttribute('data-chapter-page'), 10);
-            if (page === idx) el.removeAttribute('hidden');
-            else el.setAttribute('hidden', '');
-        });
-        const prevBtn = strip.querySelector('.chapter-strip-arrow--prev');
-        const nextBtn = strip.querySelector('.chapter-strip-arrow--next');
-        if (prevBtn) prevBtn.disabled = idx <= 0;
-        if (nextBtn) nextBtn.disabled = idx >= maxPage;
-        scrollVisibleChapterLinkIntoView(strip);
-    }
-
-    function wireChapterStripPagination(navHost, initialPage) {
+    function wireChapterStripSelect(navHost) {
         const strip = navHost && navHost.querySelector('.chapter-strip');
-        if (!strip || strip.getAttribute('data-hq-strip-wired') === '1') return;
-        strip.setAttribute('data-hq-strip-wired', '1');
-        const prevBtn = strip.querySelector('.chapter-strip-arrow--prev');
-        const nextBtn = strip.querySelector('.chapter-strip-arrow--next');
-        if (prevBtn) {
-            prevBtn.addEventListener('click', function () {
-                const cur = parseInt(strip.getAttribute('data-chapter-page-active') || '0', 10);
-                setChapterStripPage(strip, cur - 1);
-            });
-        }
-        if (nextBtn) {
-            nextBtn.addEventListener('click', function () {
-                const cur = parseInt(strip.getAttribute('data-chapter-page-active') || '0', 10);
-                setChapterStripPage(strip, cur + 1);
-            });
-        }
-        setChapterStripPage(strip, initialPage);
+        const select = strip && strip.querySelector('.chapter-strip-select');
+        if (!select || select.getAttribute('data-hq-select-wired') === '1') return;
+        select.setAttribute('data-hq-select-wired', '1');
+        select.addEventListener('change', function () {
+            if (select.value) window.location.href = select.value;
+        });
     }
 
     function renderDynamicNav(opts) {
@@ -618,10 +562,7 @@
         const baseFile = opts.navBaseFile;
         const activeModule = opts.activeModule;
         const contextHtml = opts.contextHtml || '';
-        const initialPage = window.HANQIAO.chapterPageIndex(
-            window.HANQIAO.chapterNumFromSegment(fromSeg) || 1
-        );
-        const stripLinks = buildChapterStripLinks(chapters, fromSeg, baseFile, initialPage);
+        const chapterOptions = buildChapterStripOptions(chapters, fromSeg, baseFile);
 
         const meta = {
             pathSegment: fromSeg,
@@ -656,35 +597,32 @@
             })
             .join('');
 
-        const html =
-            '<nav class="chapter-strip" aria-label="章节切换" data-chapter-page-active="' +
-            initialPage +
-            '">' +
-            '<div class="container chapter-strip-inner">' +
-            '<div class="chapter-strip-row">' +
-            '<div class="chapter-strip-links-wrap">' +
-            '<div class="chapter-strip-links">' +
-            stripLinks +
-            '</div></div>' +
-            '<div class="chapter-strip-arrows">' +
-            '<button type="button" class="chapter-strip-arrow chapter-strip-arrow--prev" aria-label="上一组章节" data-i18n-aria-label="chapterStripPagePrev">' +
-            '<span aria-hidden="true">‹</span></button>' +
-            '<button type="button" class="chapter-strip-arrow chapter-strip-arrow--next" aria-label="下一组章节" data-i18n-aria-label="chapterStripPageNext">' +
-            '<span aria-hidden="true">›</span></button>' +
-            '</div></div></div></nav>' +
-            contextHtml +
-            '<nav class="subnav-wrap" aria-label="本篇模块">' +
-            '<div class="container subnav-inner">' +
-            sub +
-            '</div></nav>';
+        const moduleNavHtml = activeModule === 'hub'
+            ? ''
+            : '<nav class="subnav-wrap" aria-label="本篇模块">' +
+              '<div class="container subnav-inner">' +
+              sub +
+              '</div></nav>';
 
-        return { html: html, meta: meta, initialPage: initialPage };
+        const html =
+            '<div class="chapter-context-row container">' +
+            contextHtml +
+            '<nav class="chapter-strip" aria-label="章节切换">' +
+            '<div class="chapter-strip-inner">' +
+            '<label class="chapter-picker">' +
+            '<span data-i18n="chapterStripLabel"></span>' +
+            '<select class="chapter-strip-select" aria-label="章节" data-i18n-aria-label="chapterStripLabel">' +
+            chapterOptions +
+            '</select></label></div></nav></div>' +
+            moduleNavHtml;
+
+        return { html: html, meta: meta };
     }
 
     function mountChapterNav(navHost, opts) {
         const built = renderDynamicNav(opts);
         navHost.innerHTML = built.html;
-        wireChapterStripPagination(navHost, built.initialPage);
+        wireChapterStripSelect(navHost);
         let metaEl = document.getElementById('hanqiao-work-nav-meta');
         if (!metaEl) {
             metaEl = document.createElement('script');

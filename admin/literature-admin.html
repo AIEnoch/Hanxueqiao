@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body.page-admin { padding-top: 72px; background: var(--light-bg, #f1f5f9); }
+        body.page-admin { padding-top: var(--header-visible-height, 72px); background: var(--light-bg, #f1f5f9); }
+        @media (max-width: 768px) { body.page-admin { padding-top: 128px; } }
         .admin-wrap { max-width: 1080px; margin: 0 auto; padding: 24px 16px 120px; }
         .admin-card {
             background: #fff;
